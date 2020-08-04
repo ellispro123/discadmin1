@@ -1,0 +1,1730 @@
+{
+  "nodes": [
+    {
+      "type": "command",
+      "name": "help",
+      "guid": "7942fe4c-dffa-4146-8cab-d254b3d80d5d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "44f79e79-f919-4946-ad17-a825464cf110"
+          ]
+        }
+      ],
+      "x": 118,
+      "y": 137
+    },
+    {
+      "type": "response",
+      "name": "Example Help Menu",
+      "guid": "44f79e79-f919-4946-ad17-a825464cf110",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7942fe4c-dffa-4146-8cab-d254b3d80d5d"
+        }
+      ],
+      "x": 316,
+      "y": 124,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandAuthor.user.dmChannel}",
+        "FFF94F",
+        "Help/Commands",
+        "",
+        "DiscAdmin",
+        "https://cdn.discordapp.com/icons/695247860043743282/7014bd7abd80206328ed251ec1e75e43.jpg",
+        "",
+        "**Please note this is caps sensitive so if its shown as \".Announce\" type it as that**\n.serverinfo - Shows the information of this server\n.help - Shows this page\n.credits - shows the helpers around DiscAdmin\n.support - helps support the group\n.suggest - Gives a suggestion \n.ping - ping rate of the bot\n.Announce - Announcement **WARNING** To use this you must have @@everyone perms and have a channel called \"announcements\"\n.kick - Kicks user **WARNING** To use this you must have Kick perms.\n.ban - ban user **WARNING** To use this you must have ban perms.\n.invite - Invite link to add this bot to your server \n",
+        "https://cdn.discordapp.com/icons/695247860043743282/7014bd7abd80206328ed251ec1e75e43.jpg",
+        "",
+        "",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "info",
+      "guid": "2224944a-561a-4fa1-824b-2f31ea37c836",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "c0e4aed3-30e7-43fc-a488-4fdbca813896"
+          ]
+        }
+      ],
+      "x": 5,
+      "y": 270
+    },
+    {
+      "type": "response",
+      "name": "Server Info",
+      "guid": "c0e4aed3-30e7-43fc-a488-4fdbca813896",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "no",
+      "saveToVariableType": "server",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2224944a-561a-4fa1-824b-2f31ea37c836"
+        }
+      ],
+      "x": 23,
+      "y": 374,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "1783FF",
+        "Server Info",
+        "",
+        "Test Bot",
+        "",
+        "",
+        "<@$$CommandAuthor$$>, here is the server info:\nMember Count: $$MemberCount$$\nBot Joined At: $$JoinedAt$$\nServer Name: $$ServerName$$\nServer Owner: <@$$ServerOwner$$>\nServer Region: $$ServerRegion$$\nVerification Level: $$VerificationLevel$$",
+        "",
+        "$$ServerIcon$$",
+        "",
+        "false",
+        "no",
+        "server"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "warn",
+      "guid": "39fe93ff-5109-4f0d-a540-d3c4c414b9ce",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "2a390f73-e005-4eb3-a653-6090da39483c"
+          ]
+        }
+      ],
+      "x": 611,
+      "y": 169
+    },
+    {
+      "type": "response",
+      "name": "warnuser",
+      "guid": "2a390f73-e005-4eb3-a653-6090da39483c",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "cf947fde-02fd-41cb-98a2-c15e7705efdd"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "39fe93ff-5109-4f0d-a540-d3c4c414b9ce"
+        }
+      ],
+      "x": 802,
+      "y": 160,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "%%warnuser%%",
+        "User"
+      ],
+      "formnames": [
+        "varname",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "warned",
+      "guid": "cf947fde-02fd-41cb-98a2-c15e7705efdd",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2a390f73-e005-4eb3-a653-6090da39483c"
+        }
+      ],
+      "x": 1010,
+      "y": 145,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${undefinedVars.%%warnuser%%.user.dmChannel}",
+        "User has been warned",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "kick",
+      "guid": "1dc297ac-0b47-44b0-a263-adb4a0471c53",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "5c9edef2-d8aa-4b9b-bd50-918b44294e74"
+          ]
+        }
+      ],
+      "x": 299,
+      "y": 506
+    },
+    {
+      "type": "response",
+      "name": "Kick perms",
+      "guid": "5c9edef2-d8aa-4b9b-bd50-918b44294e74",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "7c3fc966-1a53-4572-a06a-6dba8fdbe80b",
+            "6a7b3578-9a9e-44b5-85e9-06c70541cf29"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "0721e996-c6a3-4e6b-8168-5f2a62a6b934"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "1dc297ac-0b47-44b0-a263-adb4a0471c53"
+        }
+      ],
+      "x": 466,
+      "y": 490,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "$$CommandAuthor$$",
+        [
+          "KICK_MEMBERS"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kicked",
+      "guid": "7b54139a-abfb-4dd0-87bd-518f3969bbff",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7c3fc966-1a53-4572-a06a-6dba8fdbe80b"
+        }
+      ],
+      "x": 812,
+      "y": 486,
+      "rtype": "User Action",
+      "rsubtype": "Kick User",
+      "formdata": [
+        "%%kick%%",
+        "Kicked"
+      ],
+      "formnames": [
+        "user",
+        "reason"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Notperms",
+      "guid": "281e3c84-36cc-481a-980e-0937351058a2",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5c9edef2-d8aa-4b9b-bd50-918b44294e74"
+        }
+      ],
+      "x": 13,
+      "y": 616,
+      "rtype": "Message",
+      "rsubtype": "Send Message"
+    },
+    {
+      "type": "response",
+      "name": "noperms",
+      "guid": "0721e996-c6a3-4e6b-8168-5f2a62a6b934",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5c9edef2-d8aa-4b9b-bd50-918b44294e74"
+        }
+      ],
+      "x": 634,
+      "y": 607,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "$$CommandChannel$$",
+        "FF0000",
+        "$$AuthorDisplayName$$ ",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        ":x: You do not have permission to use the kick command.\nMissing: `Kick member`s or `Moderator role`",
+        "",
+        "",
+        "",
+        "false"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kickuser",
+      "guid": "7c3fc966-1a53-4572-a06a-6dba8fdbe80b",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "7b54139a-abfb-4dd0-87bd-518f3969bbff"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5c9edef2-d8aa-4b9b-bd50-918b44294e74"
+        }
+      ],
+      "x": 625,
+      "y": 498,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "kick",
+        "User"
+      ],
+      "formnames": [
+        "varname",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Kick perm yes",
+      "guid": "6a7b3578-9a9e-44b5-85e9-06c70541cf29",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5c9edef2-d8aa-4b9b-bd50-918b44294e74"
+        }
+      ],
+      "x": 612,
+      "y": 389,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "$$CommandChannel$$",
+        "3DFF0C",
+        "$$AuthorDisplayName$$",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        ":ballot_box_with_check: You have kicked %%kick%%",
+        "",
+        "",
+        "",
+        "false"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "ban",
+      "guid": "f4781c77-47f0-44f7-9c5e-ae63e6476690",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "c94473d9-2492-4f0b-8218-b835030bce76"
+          ]
+        }
+      ],
+      "x": 90,
+      "y": 904
+    },
+    {
+      "type": "response",
+      "name": "ban perms",
+      "guid": "c94473d9-2492-4f0b-8218-b835030bce76",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "eef4a84e-525d-4cc2-ab2b-5f391af128cc",
+            "c463c369-9845-42a7-9668-7a9b28edc9f2"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "6a33eb2a-2070-411e-ad53-2e2379dfb230"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "f4781c77-47f0-44f7-9c5e-ae63e6476690"
+        }
+      ],
+      "x": 317,
+      "y": 930,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "$$CommandAuthor$$",
+        [
+          "BAN_MEMBERS"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "banned",
+      "guid": "1487949f-11d9-4bf8-91ea-a7be509624fc",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c463c369-9845-42a7-9668-7a9b28edc9f2"
+        }
+      ],
+      "x": 803,
+      "y": 814,
+      "rtype": "User Action",
+      "rsubtype": "Ban User",
+      "formdata": [
+        "%%ban%%",
+        "",
+        ""
+      ],
+      "formnames": [
+        "user",
+        "reason",
+        "days"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Ban user",
+      "guid": "c463c369-9845-42a7-9668-7a9b28edc9f2",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "1487949f-11d9-4bf8-91ea-a7be509624fc"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c94473d9-2492-4f0b-8218-b835030bce76"
+        }
+      ],
+      "x": 593,
+      "y": 917,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "ban",
+        "User"
+      ],
+      "formnames": [
+        "varname",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "ban perms - Yes",
+      "guid": "eef4a84e-525d-4cc2-ab2b-5f391af128cc",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c94473d9-2492-4f0b-8218-b835030bce76"
+        }
+      ],
+      "x": 456,
+      "y": 750,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "$$CommandChannel$$",
+        "6CFF0A",
+        "$$AuthorDisplayName$$",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        ":ballot_box_with_check: You have Banned %%ban%%",
+        "",
+        "",
+        "",
+        "false"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "ban perms - No",
+      "guid": "6a33eb2a-2070-411e-ad53-2e2379dfb230",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c94473d9-2492-4f0b-8218-b835030bce76"
+        }
+      ],
+      "x": 634,
+      "y": 1045,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "$$CommandChannel$$",
+        "FF0000",
+        "$$AuthorDisplayName$$",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        ":x: You do not have permission to use the kick command.\nMissing: `Ban member`s or `Moderator role`",
+        "",
+        "",
+        "",
+        "false"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "ping",
+      "guid": "cab768b1-be92-4b82-900f-d0bb23c3bff5",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "b9585681-ae8d-4d96-8feb-b001860bc1ee"
+          ]
+        }
+      ],
+      "x": 250,
+      "y": 1572
+    },
+    {
+      "type": "response",
+      "name": "pingr",
+      "guid": "6f0464e8-6236-42a8-bbb8-40b4ea055877",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b9585681-ae8d-4d96-8feb-b001860bc1ee"
+        }
+      ],
+      "x": 568,
+      "y": 1573,
+      "rtype": "Message",
+      "rsubtype": "Ping Message",
+      "formdata": [
+        ":ping_pong: $$ping$$ :ping_pong: "
+      ],
+      "formnames": [
+        "pingMessage"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "CC",
+      "guid": "b9585681-ae8d-4d96-8feb-b001860bc1ee",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "6f0464e8-6236-42a8-bbb8-40b4ea055877"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "cab768b1-be92-4b82-900f-d0bb23c3bff5"
+        }
+      ],
+      "x": 412,
+      "y": 1570,
+      "rtype": "Variable",
+      "rsubtype": "Get Command Channel",
+      "formdata": [
+        "$$CommandAuthor$$",
+        "Channel"
+      ],
+      "formnames": [
+        "varname",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "poll",
+      "guid": "317e7acb-9b00-4f97-bf1b-d9faa01af98a",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": ""
+        }
+      ],
+      "x": 781,
+      "y": 1204,
+      "rtype": "Message",
+      "rsubtype": "Embed Poll",
+      "formdata": [
+        "YES or no ",
+        "8FFFD6",
+        "ghfff",
+        "",
+        "",
+        "Yes, No"
+      ],
+      "formnames": [
+        "title",
+        "color",
+        "description",
+        "thumbnail",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "poll.",
+      "guid": "d53f2ca5-f99e-4b6d-a8ec-a33a7e661d77",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": []
+        }
+      ],
+      "x": 308,
+      "y": 1206
+    },
+    {
+      "type": "command",
+      "name": "suggest",
+      "guid": "c5745862-6098-4963-b3ae-157cdd5837de",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "ff64a4bb-0675-4579-9b44-bacf6a825255"
+          ]
+        }
+      ],
+      "x": 295,
+      "y": 1398
+    },
+    {
+      "type": "response",
+      "name": "Message1",
+      "guid": "ff64a4bb-0675-4579-9b44-bacf6a825255",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "56c0f3dd-daee-4779-b94c-62231973eb84"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c5745862-6098-4963-b3ae-157cdd5837de"
+        }
+      ],
+      "x": 469,
+      "y": 1396,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "Suggest",
+        "Text",
+        "temp",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "suggest1",
+      "guid": "56c0f3dd-daee-4779-b94c-62231973eb84",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ff64a4bb-0675-4579-9b44-bacf6a825255"
+        }
+      ],
+      "x": 730,
+      "y": 1410,
+      "rtype": "Message",
+      "rsubtype": "Embed Poll",
+      "formdata": [
+        "New Suggestion",
+        "1259FF",
+        "${tempVars.Suggest}",
+        "",
+        "",
+        "Yes, No"
+      ],
+      "formnames": [
+        "title",
+        "color",
+        "description",
+        "thumbnail",
+        "image",
+        "options"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "test",
+      "guid": "aac74d75-5c00-44ca-abb4-54685db944c9",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "aceaeebe-6537-4443-be8f-5058491f37cb"
+          ]
+        }
+      ],
+      "x": 250,
+      "y": 2125
+    },
+    {
+      "type": "response",
+      "name": "testmes",
+      "guid": "aceaeebe-6537-4443-be8f-5058491f37cb",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "aac74d75-5c00-44ca-abb4-54685db944c9"
+        }
+      ],
+      "x": 469,
+      "y": 2128,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandAuthor.user.dmChannel}",
+        "TEST TEST TEST",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "react",
+      "guid": "214885be-0978-4cbb-840b-aa7fb0d7cd98",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "061f760f-fdad-4a90-8606-6da6315a9e43"
+          ]
+        }
+      ],
+      "x": 316,
+      "y": 2446
+    },
+    {
+      "type": "response",
+      "name": "rr",
+      "guid": "061f760f-fdad-4a90-8606-6da6315a9e43",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "Reactionmess",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "74a777a5-768d-448d-8f06-eec41dd04859"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "214885be-0978-4cbb-840b-aa7fb0d7cd98"
+        }
+      ],
+      "x": 514,
+      "y": 2422,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFFFFF",
+        "Test Reaction Roles",
+        "",
+        "DiscAdmin official test",
+        "",
+        "",
+        "Reaction role test\n",
+        "",
+        "",
+        "",
+        "false",
+        "Reactionmess",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "rrr",
+      "guid": "74a777a5-768d-448d-8f06-eec41dd04859",
+      "reactionFields": [
+        "😀",
+        "😁"
+      ],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "😀",
+          "connections": [
+            "e63e0147-9221-4f0a-909f-a4f6538db242"
+          ]
+        },
+        {
+          "label": "😁",
+          "connections": [
+            "33ff7671-b71e-4f48-b7b9-95ded1906495"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "061f760f-fdad-4a90-8606-6da6315a9e43"
+        }
+      ],
+      "x": 709,
+      "y": 2525,
+      "rtype": "Reaction",
+      "rsubtype": "Add Reaction Listener",
+      "formdata": [
+        "${tempVars.Reactionmess.id}",
+        "60",
+        "Re",
+        "Ru",
+        "BOOL_TRUE@@"
+      ],
+      "formnames": [
+        "message",
+        "duration",
+        "reactionemoji",
+        "reactionuser",
+        "react"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "PCV",
+      "guid": "e63e0147-9221-4f0a-909f-a4f6538db242",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "74a777a5-768d-448d-8f06-eec41dd04859"
+        }
+      ],
+      "x": 916,
+      "y": 2495,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.Ru.id}",
+        "PCV Driver"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Test",
+      "guid": "33ff7671-b71e-4f48-b7b9-95ded1906495",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "74a777a5-768d-448d-8f06-eec41dd04859"
+        }
+      ],
+      "x": 944,
+      "y": 2626,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.Ru.id}",
+        "Suspended"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "support",
+      "guid": "30ccde90-41c8-416d-ad5d-f0439f779217",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "f75c756d-a28f-44f0-8772-5ce727f4eece"
+          ]
+        }
+      ],
+      "x": 238,
+      "y": 317
+    },
+    {
+      "type": "response",
+      "name": "supportresponce",
+      "guid": "f75c756d-a28f-44f0-8772-5ce727f4eece",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "30ccde90-41c8-416d-ad5d-f0439f779217"
+        }
+      ],
+      "x": 408,
+      "y": 304,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandAuthor.user.dmChannel}",
+        "3C1DFF",
+        "Support DiscAdmin and partners",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        "In this link you can donate anything to us at DiscAdmin,\nIf you pay;\n£3 - Free investor at Stagecoach\n£5 - Free bot made by DiscAdmin\n£7 - All of the Above! \npaypal.me/SCStagecoach",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "fleet",
+      "guid": "55bfbb17-d8df-4a3a-ae20-5f1161c449aa",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "63b1da66-53ef-459d-8994-8f44d27b3402"
+          ]
+        }
+      ],
+      "x": 751,
+      "y": 314
+    },
+    {
+      "type": "response",
+      "name": "fleetresponce",
+      "guid": "63b1da66-53ef-459d-8994-8f44d27b3402",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "55bfbb17-d8df-4a3a-ae20-5f1161c449aa"
+        }
+      ],
+      "x": 950,
+      "y": 314,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandAuthor.user.dmChannel}",
+        "22FFDA",
+        "Stagecoach Fleet",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        "Swanlake\n- E200 MMC - VxneLegit\n- E400 MMC- Railwork\n- E400 - Railwork\n- Streetlite - un_setup\n- Solo - HHWheat\n- E200 - HHwheat\n\n\n------------\nComing Soon™",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "credits",
+      "guid": "4702b2b5-428f-4db3-bf3f-5bf344bbf451",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "6ad4cfd2-1bcb-40ea-b637-76178d178086"
+          ]
+        }
+      ],
+      "x": 250,
+      "y": 1751
+    },
+    {
+      "type": "response",
+      "name": "Creditsrespoce",
+      "guid": "6ad4cfd2-1bcb-40ea-b637-76178d178086",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4702b2b5-428f-4db3-bf3f-5bf344bbf451"
+        }
+      ],
+      "x": 438,
+      "y": 1751,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandAuthor.user.dmChannel}",
+        "C249FF",
+        "Credits",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        "BrickbusEllis - Bot development\n",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "Announce",
+      "guid": "07dcfa74-0ce9-4db2-8b34-139fd05ea7ad",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "fe815eb9-1a58-48c0-80b4-314bebcbaf2e"
+          ]
+        }
+      ],
+      "x": 800,
+      "y": 1000
+    },
+    {
+      "type": "response",
+      "name": "announcevar",
+      "guid": "6b9f7ac8-7a85-4194-a63a-d556e795b9e6",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a667ef22-30e2-448f-b391-f1b5b98cf2de"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "fe815eb9-1a58-48c0-80b4-314bebcbaf2e"
+        }
+      ],
+      "x": 1116,
+      "y": 1127,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "announce",
+        "Text",
+        "temp",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Announcemnt",
+      "guid": "a667ef22-30e2-448f-b391-f1b5b98cf2de",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "fbe7c1be-7f68-4a1e-a54c-c74684d8a369"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "6b9f7ac8-7a85-4194-a63a-d556e795b9e6"
+        }
+      ],
+      "x": 1280,
+      "y": 1127,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "announcements",
+        "375FFF",
+        "${dbsVars.guild.name} Announcement",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        "${tempVars.announce}\n\nAnnoucement from ${dbsVars.CommandAuthor.displayName}",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Announceperms",
+      "guid": "fe815eb9-1a58-48c0-80b4-314bebcbaf2e",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "6b9f7ac8-7a85-4194-a63a-d556e795b9e6"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "893153ee-5ea1-4124-beb7-83eaf9d7f584"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "07dcfa74-0ce9-4db2-8b34-139fd05ea7ad"
+        }
+      ],
+      "x": 940,
+      "y": 1085,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "MENTION_EVERYONE"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Annouceping",
+      "guid": "fbe7c1be-7f68-4a1e-a54c-c74684d8a369",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a667ef22-30e2-448f-b391-f1b5b98cf2de"
+        }
+      ],
+      "x": 1307,
+      "y": 1277,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "announcements",
+        "@everyone",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Announcenoperms",
+      "guid": "893153ee-5ea1-4124-beb7-83eaf9d7f584",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "fe815eb9-1a58-48c0-80b4-314bebcbaf2e"
+        }
+      ],
+      "x": 1055,
+      "y": 1249,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandAuthor.user.dmChannel}",
+        "FF0000",
+        "Announcement ",
+        "",
+        "DiscAdmin",
+        "",
+        "",
+        ":x: You dont have Perms to use the Annouce Command ",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "U",
+      "guid": "033a9268-7ae0-4d6c-b4be-22cce9ab9f48",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "33fe666b-b26d-4fab-b3af-2868348292bd"
+          ]
+        }
+      ],
+      "x": 250,
+      "y": 3463
+    },
+    {
+      "type": "response",
+      "name": "U1",
+      "guid": "33fe666b-b26d-4fab-b3af-2868348292bd",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "6bf2bbb4-b274-4b74-8380-e29eda1f0731"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "033a9268-7ae0-4d6c-b4be-22cce9ab9f48"
+        }
+      ],
+      "x": 422,
+      "y": 3469,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "@everyone",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "u2",
+      "guid": "6bf2bbb4-b274-4b74-8380-e29eda1f0731",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "33fe666b-b26d-4fab-b3af-2868348292bd"
+        }
+      ],
+      "x": 628,
+      "y": 3488,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "@everyone",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "invite link",
+      "guid": "c12b013e-65da-46e0-b03d-522d8b46ac98",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "754264f7-e49f-490a-aa7d-5a31f88b2e8f"
+        }
+      ],
+      "x": 1256,
+      "y": 608,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandAuthor.user.dmChannel}",
+        "Bot - https://discord.com/api/oauth2/authorize?client_id=712823619482550342&permissions=0&scope=bot\nHelp server - https://discord.gg/kYA5VDX",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "invite",
+      "guid": "754264f7-e49f-490a-aa7d-5a31f88b2e8f",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "c12b013e-65da-46e0-b03d-522d8b46ac98"
+          ]
+        }
+      ],
+      "x": 1052,
+      "y": 613
+    }
+  ]
+}

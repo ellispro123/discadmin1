@@ -1,0 +1,504 @@
+{
+  "command": [
+    {
+      "name": "help",
+      "actions": [
+        {
+          "name": "Example Help Menu",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandAuthor.user.dmChannel}",
+          "color": "FFF94F",
+          "title": "Help/Commands",
+          "url": "",
+          "authorname": "DiscAdmin",
+          "authorimageurl": "https://cdn.discordapp.com/icons/695247860043743282/7014bd7abd80206328ed251ec1e75e43.jpg",
+          "authorlink": "",
+          "description": "**Please note this is caps sensitive so if its shown as \".Announce\" type it as that**\n.serverinfo - Shows the information of this server\n.help - Shows this page\n.credits - shows the helpers around DiscAdmin\n.support - helps support the group\n.suggest - Gives a suggestion \n.ping - ping rate of the bot\n.Announce - Announcement **WARNING** To use this you must have @@everyone perms and have a channel called \"announcements\"\n.kick - Kicks user **WARNING** To use this you must have Kick perms.\n.ban - ban user **WARNING** To use this you must have ban perms.\n.invite - Invite link to add this bot to your server \n",
+          "thumbnail": "https://cdn.discordapp.com/icons/695247860043743282/7014bd7abd80206328ed251ec1e75e43.jpg",
+          "image": "",
+          "footer": "",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "actions": [
+        {
+          "name": "Server Info",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "1783FF",
+          "title": "Server Info",
+          "url": "",
+          "authorname": "Test Bot",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "<@$$CommandAuthor$$>, here is the server info:\nMember Count: $$MemberCount$$\nBot Joined At: $$JoinedAt$$\nServer Name: $$ServerName$$\nServer Owner: <@$$ServerOwner$$>\nServer Region: $$ServerRegion$$\nVerification Level: $$VerificationLevel$$",
+          "thumbnail": "",
+          "image": "$$ServerIcon$$",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "no",
+          "savetovariabletype": "server"
+        }
+      ]
+    },
+    {
+      "name": "warn",
+      "actions": [
+        {
+          "name": "warnuser",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "varname": "%%warnuser%%",
+          "vartype": "User"
+        },
+        {
+          "name": "warned",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${undefinedVars.%%warnuser%%.user.dmChannel}",
+          "messagetext": "User has been warned",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "kick",
+      "actions": [
+        {
+          "name": "Kick perms",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "kickuser",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "kick",
+              "vartype": "User"
+            },
+            {
+              "name": "Kick perm yes",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "$$CommandChannel$$",
+              "color": "3DFF0C",
+              "title": "$$AuthorDisplayName$$",
+              "url": "",
+              "authorname": "DiscAdmin",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": ":ballot_box_with_check: You have kicked %%kick%%",
+              "thumbnail": "",
+              "image": "",
+              "footer": "",
+              "timestamp": "false"
+            },
+            {
+              "name": "kicked",
+              "category": "User Action",
+              "type": "Kick User",
+              "user": "%%kick%%",
+              "reason": "Kicked"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "noperms",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "$$CommandChannel$$",
+              "color": "FF0000",
+              "title": "$$AuthorDisplayName$$ ",
+              "url": "",
+              "authorname": "DiscAdmin",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": ":x: You do not have permission to use the kick command.\nMissing: `Kick member`s or `Moderator role`",
+              "thumbnail": "",
+              "image": "",
+              "footer": "",
+              "timestamp": "false"
+            }
+          ],
+          "user": "$$CommandAuthor$$",
+          "permissions": [
+            "KICK_MEMBERS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ban",
+      "actions": [
+        {
+          "name": "ban perms",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "ban perms - Yes",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "$$CommandChannel$$",
+              "color": "6CFF0A",
+              "title": "$$AuthorDisplayName$$",
+              "url": "",
+              "authorname": "DiscAdmin",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": ":ballot_box_with_check: You have Banned %%ban%%",
+              "thumbnail": "",
+              "image": "",
+              "footer": "",
+              "timestamp": "false"
+            },
+            {
+              "name": "Ban user",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "ban",
+              "vartype": "User"
+            },
+            {
+              "name": "banned",
+              "category": "User Action",
+              "type": "Ban User",
+              "user": "%%ban%%",
+              "reason": "",
+              "days": ""
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "ban perms - No",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "$$CommandChannel$$",
+              "color": "FF0000",
+              "title": "$$AuthorDisplayName$$",
+              "url": "",
+              "authorname": "DiscAdmin",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": ":x: You do not have permission to use the kick command.\nMissing: `Ban member`s or `Moderator role`",
+              "thumbnail": "",
+              "image": "",
+              "footer": "",
+              "timestamp": "false"
+            }
+          ],
+          "user": "$$CommandAuthor$$",
+          "permissions": [
+            "BAN_MEMBERS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ping",
+      "actions": [
+        {
+          "name": "CC",
+          "category": "Variable",
+          "type": "Get Command Channel",
+          "varname": "$$CommandAuthor$$",
+          "vartype": "Channel"
+        },
+        {
+          "name": "pingr",
+          "category": "Message",
+          "type": "Ping Message",
+          "pingmessage": ":ping_pong: $$ping$$ :ping_pong: "
+        }
+      ]
+    },
+    {
+      "name": "poll.",
+      "actions": []
+    },
+    {
+      "name": "suggest",
+      "actions": [
+        {
+          "name": "Message1",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "varname": "Suggest",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "0"
+        },
+        {
+          "name": "suggest1",
+          "category": "Message",
+          "type": "Embed Poll",
+          "title": "New Suggestion",
+          "color": "1259FF",
+          "description": "${tempVars.Suggest}",
+          "thumbnail": "",
+          "image": "",
+          "options": "Yes, No"
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "actions": [
+        {
+          "name": "testmes",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandAuthor.user.dmChannel}",
+          "messagetext": "TEST TEST TEST",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "react",
+      "actions": [
+        {
+          "name": "rr",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FFFFFF",
+          "title": "Test Reaction Roles",
+          "url": "",
+          "authorname": "DiscAdmin official test",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Reaction role test\n",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "Reactionmess",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "rrr",
+          "category": "Reaction",
+          "type": "Add Reaction Listener",
+          "reactionActions": {
+            "😀": [
+              {
+                "name": "PCV",
+                "category": "User Action",
+                "type": "Add Role to User",
+                "user": "${tempVars.Ru.id}",
+                "rolename": "PCV Driver"
+              }
+            ],
+            "😁": [
+              {
+                "name": "Test",
+                "category": "User Action",
+                "type": "Add Role to User",
+                "user": "${tempVars.Ru.id}",
+                "rolename": "Suspended"
+              }
+            ]
+          },
+          "message": "${tempVars.Reactionmess.id}",
+          "duration": "60",
+          "reactionemoji": "Re",
+          "reactionuser": "Ru",
+          "react": "BOOL_TRUE@@"
+        }
+      ]
+    },
+    {
+      "name": "support",
+      "actions": [
+        {
+          "name": "supportresponce",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandAuthor.user.dmChannel}",
+          "color": "3C1DFF",
+          "title": "Support DiscAdmin and partners",
+          "url": "",
+          "authorname": "DiscAdmin",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "In this link you can donate anything to us at DiscAdmin,\nIf you pay;\n£3 - Free investor at Stagecoach\n£5 - Free bot made by DiscAdmin\n£7 - All of the Above! \npaypal.me/SCStagecoach",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "fleet",
+      "actions": [
+        {
+          "name": "fleetresponce",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandAuthor.user.dmChannel}",
+          "color": "22FFDA",
+          "title": "Stagecoach Fleet",
+          "url": "",
+          "authorname": "DiscAdmin",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Swanlake\n- E200 MMC - VxneLegit\n- E400 MMC- Railwork\n- E400 - Railwork\n- Streetlite - un_setup\n- Solo - HHWheat\n- E200 - HHwheat\n\n\n------------\nComing Soon™",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "credits",
+      "actions": [
+        {
+          "name": "Creditsrespoce",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.CommandAuthor.user.dmChannel}",
+          "color": "C249FF",
+          "title": "Credits",
+          "url": "",
+          "authorname": "DiscAdmin",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "BrickbusEllis - Bot development\n",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "Announce",
+      "actions": [
+        {
+          "name": "Announceperms",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "announcevar",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "announce",
+              "vartype": "Text",
+              "savevartype": "temp",
+              "param": "0"
+            },
+            {
+              "name": "Announcemnt",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "announcements",
+              "color": "375FFF",
+              "title": "${dbsVars.guild.name} Announcement",
+              "url": "",
+              "authorname": "DiscAdmin",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": "${tempVars.announce}\n\nAnnoucement from ${dbsVars.CommandAuthor.displayName}",
+              "thumbnail": "",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            },
+            {
+              "name": "Annouceping",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "announcements",
+              "messagetext": "@everyone",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "Announcenoperms",
+              "category": "Message",
+              "type": "Send Embed",
+              "channelname": "${dbsVars.CommandAuthor.user.dmChannel}",
+              "color": "FF0000",
+              "title": "Announcement ",
+              "url": "",
+              "authorname": "DiscAdmin",
+              "authorimageurl": "",
+              "authorlink": "",
+              "description": ":x: You dont have Perms to use the Annouce Command ",
+              "thumbnail": "",
+              "image": "",
+              "footer": "",
+              "timestamp": "false",
+              "savetovariable": "",
+              "savetovariabletype": "temp"
+            }
+          ],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "MENTION_EVERYONE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "U",
+      "actions": [
+        {
+          "name": "U1",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "@everyone",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "u2",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "@everyone",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "invite",
+      "actions": [
+        {
+          "name": "invite link",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "${dbsVars.CommandAuthor.user.dmChannel}",
+          "messagetext": "Bot - https://discord.com/api/oauth2/authorize?client_id=712823619482550342&permissions=0&scope=bot\nHelp server - https://discord.gg/kYA5VDX",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    }
+  ]
+}

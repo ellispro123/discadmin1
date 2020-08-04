@@ -1,0 +1,70 @@
+{
+  "command": [
+    {
+      "name": "User Joins Server",
+      "perms": [],
+      "actions": [
+        {
+          "name": "Welcome",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${dbsVars.DefaultChannel.user.dmChannel}",
+          "color": "1CFFBB",
+          "title": "Welcome",
+          "url": "",
+          "authorname": "DiscAdmin",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Welcome to ${dbsVars.guild.name} Thank you for joining, the member count is now ${dbsVars.guild.memberCount} Thank you and enjoy your stay!",
+          "thumbnail": "",
+          "image": "${dbsVars.guild.iconURL}",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ],
+      "var": {
+        "user": "newuser"
+      }
+    },
+    {
+      "name": "Any Message",
+      "perms": [],
+      "actions": [],
+      "var": {
+        "user": "msguser"
+      }
+    },
+    {
+      "name": "User Kicked",
+      "perms": [],
+      "actions": [
+        {
+          "name": "Kick message",
+          "category": "Message",
+          "type": "Send Direct Message",
+          "user": "%%kickuser%%",
+          "messagetext": "Kicked "
+        }
+      ],
+      "var": {
+        "user": "kickuser"
+      }
+    },
+    {
+      "name": "User Banned",
+      "perms": [],
+      "actions": [],
+      "var": {
+        "user": "banuser"
+      }
+    },
+    {
+      "name": "Bot Initialization",
+      "perms": [],
+      "actions": [],
+      "var": {}
+    }
+  ]
+}
